@@ -1,6 +1,5 @@
 if (process.env.NODE_ENV !== "production") {
-  require("dotenv").config ();
-
+  require("dotenv").config();
 }
 
 const express = require("express");
@@ -24,5 +23,6 @@ const db = mongoose.connection;
 db.on("error", (error) => console.error(error));
 db.once("open", () => console.log("Connected to Mongoose"));
 app.use("/", indexRouter);
+console.log(process.env.DATABASE_URL);
 
 app.listen(process.env.PORT || 5000);
